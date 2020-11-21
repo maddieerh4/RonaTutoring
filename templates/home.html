@@ -29,7 +29,7 @@
     <header>
       <div class="container">
         <div id="branding">
-          <h1><img src="static/images/headerlogo.png"/><span class="highlight">&nbsp;Rona</span> Tutoring</h1>
+          <h1><a href='home'><img src="static/images/headerlogo.png"/></a><span class="highlight">&nbsp;Rona</span> Tutoring</h1>
         </div>
 		<div class="header">
         <nav>
@@ -119,97 +119,99 @@
         <h2>1) Submit a request below! </h2>
         <h2>2) Your request will automatically be sent to our tutoring team. </h2>
         <h2>3) We'll reach out to you when we assign a tutor who suits your needs. </h2>
+
 	    <form action="">
-<!--^php is up to you lol-->
 
-<h1>Request 1-on-1 Tutoring</h1>
-<p>Our goal is to offer free tutoring to anyone who needs it, especially those who have suffered learning loss due to distance learning. If you're interested in being tutored, fill out this form and we'll contact you as soon as possible! 
-</p>
+        <h1>Request 1-on-1 Tutoring</h1>
+        <p>Our goal is to offer free tutoring to anyone who needs it, especially those who have suffered learning loss due to distance learning. If you're interested in being tutored, fill out this form and we'll contact you as soon as possible! 
+        </p>
 
-<hr style="width: 100%" />
-
-
-<p>Are you a student or parent</p>
-<input type="radio" id="student" name="type" value="student">
-<label for="student">Student</label>
-<input type="radio" id="parent" name="type" value="parent">
-<label for="parent">Parent</label>
-<br>
-<br>
-<hr style="width: 100%" />
-
-<br>
-
-<!--section 2-->
-
-<label for="lname">Last name:</label><br>
-<input type="text" id="lname" name="lname"><br><br>
-<label for="fname">First name:</label><br>
-<input type="text" id="fname" name="fname"><br><br>
-<label for="location">City and state:</label><br>
-<input type="text" id="location" name="location"><br><br>
-
-<br>
-<hr style="width: 100%" />
-
-<br>
-
-<!--section 3-->
-<label for="age">Student age</label><br>
-<input type="number" id="age" name="age"><br><br>
-<label for="grade">Student grade</label><br>
-<input type="number" id="grade" name="grade"><br><br>
-<label for="availability">Availability:</label><br>
-<input type="text" id="availability" name="availability"><br><br>
-
-<p>How did you hear about us?</p>  
-<input type="radio" id="nextdoor" name="way" value="nextdoor">
-<label for="nextdoor">Nextdoor</label><br>
-<input type="radio" id="google" name="way" value="google">
-<label for="google">Google</label><br>
-<input type="radio" id="instagram" name="way" value="instagram">
-<label for="instagram">Instagram</label><br>
-<input type="radio" id="friendsnfam" name="way" value="friendsnfam">
-<label for="friendsnfam">Friends or family</label><br>
-<input type="radio" name="way" value=""><label for ="other_way"> Other </label><input type="text" name="other_way"><br><br>
-​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-<br>
-<hr style="width: 100%" />
-
-<br>
-
-<!--section 4-->
-<label for="contact">Your contact (email):</label><br>
-<input type="email" id="contact" name="contact"><br><br>
-<label for="pcontact">Your parent's contact (email):</label><br>
-<input type="email" id="pcontact" name="pcontact"><br><br>
-<hr style="width: 100%" />
-
-<!--section 5-->
-<p>Subject(s) to be tutored in (as many as you need)</p>
-<input type="checkbox" id="math" name="subj" value="math">
-<label for="math">Math</label><br>
-<input type="checkbox" id="science" name="subj" value="science">
-<label for="science">Science</label><br>
-<input type="checkbox" id="english" name="subj" value="english">
-<label for="english">English</label><br>
-<input type="checkbox" id="history" name="subj" value="history">
-<label for="history">History</label><br>
-<input type="checkbox" id="compsci" name="subj" value="compsci">
-<label for ="compsci">Computer Science (please specify below)</label><br>
-
-<input type="checkbox" name="subj" value=""><label for ="other_subj"> Other </label><input type="text" name="other_subj"><br><br>
-
-<label for="specifycs">Please specify the grade / class:</label>
-<textarea id="specifycs" name="specifycs" rows="4" cols="50"></textarea><br><br>
-
-<label for="additional">Any additional comments, questions, concerns?</label>
-<textarea id="additional" name="additional" rows="4" cols="50"></textarea><br><br>
+        <hr style="width: 100%" />
 
 
-<button>Submit Request</button>
+        <p>Are you a student or parent?</p>
+        <input type="radio" id="student" name="type" value="student">
+        <label for="student">Student</label>
+        <input type="radio" id="parent" name="type" value="parent">
+        <label for="parent">Parent</label>
+        <br>
+        <br>
+        <hr style="width: 100%" />
 
-</form>
+        <br>
+
+        <!--section 2-->
+
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="location">City and state:</label><br>
+        <input type="text" id="location" name="location"><br><br>
+
+        <br>
+        <hr style="width: 100%" />
+
+        <br>
+
+        <!--section 3-->
+        <label for="age">Student age</label><br>
+        <input type="number" id="age" name="age"><br><br>
+        <label for="grade">Student grade</label><br>
+        <input type="number" id="grade" name="grade"><br><br>
+        <label for="availability">Availability:</label><br>
+        <input type="text" id="availability" name="availability"><br><br>
+
+        <p>How did you hear about us?</p>  
+        <input type="radio" id="nextdoor" name="way" value="nextdoor">
+        <label for="nextdoor">Nextdoor</label><br>
+        <input type="radio" id="google" name="way" value="google">
+        <label for="google">Google</label><br>
+        <input type="radio" id="instagram" name="way" value="instagram">
+        <label for="instagram">Instagram</label><br>
+        <input type="radio" id="friendsnfam" name="way" value="friendsnfam">
+        <label for="friendsnfam">Friends or family</label><br>
+        <input type="radio" name="way" value=""><label for ="other_way"> Other </label><input type="text" name="other_way"><br><br>
+        ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+        <br>
+        <hr style="width: 100%" />
+
+        <br>
+
+        <!--section 4-->
+        <label for="contact">Your contact (email):</label><br>
+        <input type="email" id="contact" name="contact"><br><br>
+        <label for="pcontact">Your parent's contact (email):</label><br>
+        <input type="email" id="pcontact" name="pcontact"><br><br>
+        <hr style="width: 100%" />
+
+        <!--section 5-->
+        <p>Subject(s) to be tutored in (as many as you need)</p>
+        <input type="checkbox" id="math" name="subj" value="math">
+        <label for="math">Math</label><br>
+        <input type="checkbox" id="science" name="subj" value="science">
+        <label for="science">Science</label><br>
+        <input type="checkbox" id="english" name="subj" value="english">
+        <label for="english">English</label><br>
+        <input type="checkbox" id="history" name="subj" value="history">
+        <label for="history">History</label><br>
+        <input type="checkbox" id="compsci" name="subj" value="compsci">
+        <label for ="compsci">Computer Science (please specify below)</label><br>
+
+        <input type="checkbox" name="subj" value=""><label for ="other_subj"> Other </label><input type="text" name="other_subj"><br><br>
+
+        <label for="specifycs">Please specify the grade / class:</label>
+        <textarea id="specifycs" name="specifycs" rows="4" cols="50"></textarea><br><br>
+
+        <label for="additional">Any additional comments, questions, concerns?</label>
+        <textarea id="additional" name="additional" rows="4" cols="50"></textarea><br><br>
+
+
+        <button>Submit Request</button>
+        
+        <p></p>
+
+      </form>
 
 	    </div>
     </section>
@@ -219,7 +221,7 @@
         <i class="fa fa-instagram"></i></a>      
         <a href="https://www.linkedin.com/company/rona-tutoring" target="_blank" style="font-size:32px; padding-left:10px; padding-bottom: 0px;">
         <i class="fa fa-linkedin"></i></h2></a>
-        <h2 style="font-size:12px">Questions? Email us at ronatutoring@gmail.com. </h2>
+        <h2 style="font-size:12px;font-weight:normal;">Questions? Email us at ronatutoring@gmail.com. </h2>
        <p>© Rona Tutoring 2020</p>
       </div>
     </section>
