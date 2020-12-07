@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, send_from_directory
+import db_funcs
 
 app = Flask(__name__)
 
@@ -6,8 +7,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/home')
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
+
+@app.route('/home', methods=['POST', 'GET'])
 def home():
+    if request.method == "POST":
+        # use request.form
+        db_funcs.requestTutoring(request.form)
     return render_template('home.html')
 
 @app.route('/essay-editing')

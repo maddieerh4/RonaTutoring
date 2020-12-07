@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="High quality tutoring for free!">
 	  <meta name="keywords" content="Rona Tutoring,free tutoring,rona,coronavirus,corona,rona,covid,COVID-19,tutoring,non-profit,education,free education,ronatutoring.com,ronatutoring">
-  	  <meta name="robots" content="index,follow"/>
+  	<meta name="robots" content="index,follow"/>
 	  <meta name="author" content="Rona Tutoring Team">
 	  <meta name="DC.title" content="The Rona Tutoring Project | FREE, high quality tutoring for middle and high schoolers"/>
 	  <link rel="icon" type="image/png" href="static/images/logo.png">
@@ -24,8 +24,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   </head>
   <body>
+
     <header>
       <div class="container">
         <div id="branding">
@@ -43,6 +45,7 @@
         </nav>
       </div>
     </header>
+
     <section id="showcase">
       <div class="container">
         <h1>Learn with us!</h1>
@@ -81,6 +84,7 @@
         <a href="#request"><button class="button button1" style="margin-bottom:50px">Request Tutoring</button></a>
         </div>
     </section>
+
     <section id="first">
       <div class="container">
         <h1>Why Rona Tutoring?</h1>
@@ -90,6 +94,7 @@
  
       </div>
     </section>
+
     <section id="second">
       <div class="container">
         <h1>Our Mission</h1>
@@ -101,6 +106,7 @@
           <img src="static/images/bridge.png" style="height:200px; margin-top:10px; margin-bottom: 25px;"/>
       </div>
     </section>
+
     <section id="third">
       <div class="container">
         <h1 style="color:black">Qualifications</h1>
@@ -112,109 +118,140 @@
              <img src="static/images/nueva.png" style="height:65px;margin-top:40px;margin-right:25px;margin-bottom:50px;"/><img src="static/images/wisconsin.png" style="height:80px;margin-right:25px;margin-bottom:50px;"/><img src="static/images/dtech.gif" style="height:65px;margin-bottom:50px;"/></p>
       </div>
     </section>
+
     <section id="fifth">
       <div class="container">
         <div id="request"></div>
         <h1>How It Works</h1>
         <h2>1) Submit a request below! </h2>
         <h2>2) Your request will automatically be sent to our tutoring team. </h2>
-        <h2>3) We'll reach out to you when we assign a tutor who suits your needs. </h2>
-
-	    <form action="">
-
-        <h1>Request 1-on-1 Tutoring</h1>
-        <p>Our goal is to offer free tutoring to anyone who needs it, especially those who have suffered learning loss due to distance learning. If you're interested in being tutored, fill out this form and we'll contact you as soon as possible! 
-        </p>
-
-        <hr style="width: 100%" />
-
-
-        <p>Are you a student or parent?</p>
-        <input type="radio" id="student" name="type" value="student">
-        <label for="student">Student</label>
-        <input type="radio" id="parent" name="type" value="parent">
-        <label for="parent">Parent</label>
-        <br>
-        <br>
-        <hr style="width: 100%" />
-
-        <br>
-
-        <!--section 2-->
-
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br><br>
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="location">City and state:</label><br>
-        <input type="text" id="location" name="location"><br><br>
-
-        <br>
-        <hr style="width: 100%" />
-
-        <br>
-
-        <!--section 3-->
-        <label for="age">Student age</label><br>
-        <input type="number" id="age" name="age"><br><br>
-        <label for="grade">Student grade</label><br>
-        <input type="number" id="grade" name="grade"><br><br>
-        <label for="availability">Availability:</label><br>
-        <input type="text" id="availability" name="availability"><br><br>
-
-        <p>How did you hear about us?</p>  
-        <input type="radio" id="nextdoor" name="way" value="nextdoor">
-        <label for="nextdoor">Nextdoor</label><br>
-        <input type="radio" id="google" name="way" value="google">
-        <label for="google">Google</label><br>
-        <input type="radio" id="instagram" name="way" value="instagram">
-        <label for="instagram">Instagram</label><br>
-        <input type="radio" id="friendsnfam" name="way" value="friendsnfam">
-        <label for="friendsnfam">Friends or family</label><br>
-        <input type="radio" name="way" value=""><label for ="other_way"> Other </label><input type="text" name="other_way"><br><br>
-        ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-        <br>
-        <hr style="width: 100%" />
-
-        <br>
-
-        <!--section 4-->
-        <label for="contact">Your contact (email):</label><br>
-        <input type="email" id="contact" name="contact"><br><br>
-        <label for="pcontact">Your parent's contact (email):</label><br>
-        <input type="email" id="pcontact" name="pcontact"><br><br>
-        <hr style="width: 100%" />
-
-        <!--section 5-->
-        <p>Subject(s) to be tutored in (as many as you need)</p>
-        <input type="checkbox" id="math" name="subj" value="math">
-        <label for="math">Math</label><br>
-        <input type="checkbox" id="science" name="subj" value="science">
-        <label for="science">Science</label><br>
-        <input type="checkbox" id="english" name="subj" value="english">
-        <label for="english">English</label><br>
-        <input type="checkbox" id="history" name="subj" value="history">
-        <label for="history">History</label><br>
-        <input type="checkbox" id="compsci" name="subj" value="compsci">
-        <label for ="compsci">Computer Science (please specify below)</label><br>
-
-        <input type="checkbox" name="subj" value=""><label for ="other_subj"> Other </label><input type="text" name="other_subj"><br><br>
-
-        <label for="specifycs">Please specify the grade / class:</label>
-        <textarea id="specifycs" name="specifycs" rows="4" cols="50"></textarea><br><br>
-
-        <label for="additional">Any additional comments, questions, concerns?</label>
-        <textarea id="additional" name="additional" rows="4" cols="50"></textarea><br><br>
-
-
-        <button>Submit Request</button>
-        
-        <p></p>
-
-      </form>
-
+        <h2>3) We'll reach out to you when we assign a tutor who suits your needs. </h2>  
 	    </div>
     </section>
+
+    <section id="sixth">
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $('#submitForm').click(function() {
+              checked = $("input[type=checkbox]:checked").length;
+  
+              if(!checked) {
+                alert("You must check at least one subject to be tutored in.");
+                return false;
+              }
+  
+            });
+        });
+      </script>
+      <div class="container">
+        <form method="post">
+
+          <h1>Request One-on-One Tutoring</h1>
+          <p>
+            Our goal is to offer free tutoring to anyone who needs it, especially those 
+            who have suffered learning loss due to distance learning. If you're interested 
+            in being tutored, fill out this form and we'll contact you as soon as possible! 
+          </p>
+
+          <!-- <hr style="width: 100%" /> -->
+          <p>__________________________________________________________________</p>
+
+
+          <p>Are you a student or parent?</p>
+          <input type="radio" id="student" name="userType" value="student" onkeydown="return event.key != 'Enter';" required>
+          <label for="student">Student</label>
+          <input type="radio" id="parent" name="userType" value="parent" onkeydown="return event.key != 'Enter';">
+          <label for="parent">Parent</label>
+          <br>
+          <br>
+
+          <!--section 2-->
+
+          <label for="lastName">Last Name:</label><br>
+          <input type="text" id="lastName" name="lastName" onkeydown="return event.key != 'Enter';" required><br><br>
+          <label for="firstName">First Name:</label><br>
+          <input type="text" id="firstName" name="firstName" onkeydown="return event.key != 'Enter';" required><br><br>
+          <label for="location">City and State:</label><br>
+          <input type="text" id="location" name="location" onkeydown="return event.key != 'Enter';" required><br><br>
+
+          <br>
+
+          <!-- <hr style="width: 100%" /> -->
+          <p>__________________________________________________________________</p>
+
+          <br>
+
+          <!--section 3-->
+          <label for="age">Student Age</label><br>
+          <input type="number" id="age" name="age" onkeydown="return event.key != 'Enter';" required><br><br>
+          <label for="grade">Student Grade</label><br>
+          <input type="number" id="grade" name="grade" onkeydown="return event.key != 'Enter';" required><br><br>
+
+          <label for="studentContact">Student Contact (Email):</label><br>
+          <input type="email" id="studentContact" name="studentContact" onkeydown="return event.key != 'Enter';"><br><br>
+          <label for="parentContact">Parent Contact (Email):</label><br>
+          <input type="email" id="parentContact" name="parentContact" onkeydown="return event.key != 'Enter';" required><br><br>
+
+          <label for="availability">Availability:</label><br>
+          <input type="text" id="availability" name="availability" onkeydown="return event.key != 'Enter';" required><br><br>
+
+          <br>
+
+          <!-- <hr style="width: 100%" /> -->
+          <p>__________________________________________________________________</p>
+
+          <br>
+
+          <!--section 4-->
+          <p>How did you hear about us?</p>  
+          <input type="radio" id="nextdoor" name="marketingSource" value="nextdoor" onkeydown="return event.key != 'Enter';" required>
+          <label for="nextdoor">Nextdoor</label><br>
+          <input type="radio" id="google" name="marketingSource" value="google" onkeydown="return event.key != 'Enter';">
+          <label for="google">Google</label><br>
+          <input type="radio" id="instagram" name="marketingSource" value="instagram" onkeydown="return event.key != 'Enter';">
+          <label for="instagram">Instagram</label><br>
+          <input type="radio" id="friendsnfam" name="marketingSource" value="friendsnfam" onkeydown="return event.key != 'Enter';">
+          <label for="friendsnfam">Friends or Family</label><br>
+          <input type="radio" id="fromOther" name="marketingSource" value="fromOther" onkeydown="return event.key != 'Enter';">
+          <label for="otherWay"> Other </label>
+          <input type="text" id="otherWay" name="otherWay" onkeydown="return event.key != 'Enter';"><br><br>
+
+          <!-- <hr style="width: 100%" /> -->
+          <p>__________________________________________________________________</p>
+
+          <!--section 5-->
+          <p>Subject(s) to be tutored in (as many as you need)</p>
+          <input type="checkbox" id="math" name="math" value="math" onkeydown="return event.key != 'Enter';">
+          <label for="math">Math</label><br>
+          <input type="checkbox" id="science" name="science" value="science" onkeydown="return event.key != 'Enter';">
+          <label for="science">Science</label><br>
+          <input type="checkbox" id="english" name="english" value="english" onkeydown="return event.key != 'Enter';">
+          <label for="english">English</label><br>
+          <input type="checkbox" id="history" name="history" value="history" onkeydown="return event.key != 'Enter';">
+          <label for="history">History</label><br>
+          <input type="checkbox" id="compsci" name="compsci" value="compsci" onkeydown="return event.key != 'Enter';">
+          <label for ="compsci">Computer Science (please specify below)</label><br>
+
+          <input type="checkbox" name="wantOther" value="wantOther" onkeydown="return event.key != 'Enter';">
+          <label for ="otherSubj"> Other(s) </label>
+          <input type="text" name="otherSubj" onkeydown="return event.key != 'Enter';"><br><br>
+
+          <!-- the student specifies which level of the subject(s) they want -->
+          <label for="specificClass">Please Specify the Grade / Class:</label><br>
+          <textarea id="specificClass" name="specificClass" rows="4" cols="50" required></textarea><br><br>
+
+          <label for="additional">Any additional comments, questions, concerns?</label><br>
+          <textarea id="additional" name="additional" rows="4" cols="50"></textarea><br><br>
+
+
+          <input type="submit" value="Submit Request" id="submitForm">     
+          <p></p>
+        </form>
+      </div>
+    </section>
+
+
+
     <section id="footer">
       <div class="container">
         <h2><a href="https://www.instagram.com/ronatutoring/" target="_blank" style="font-size:32px; padding-bottom: 0px;">
