@@ -27,22 +27,22 @@ async def send_requests():
             location = row[4]
             subjects = f"{'Math, ' if row[11] else ''}{'Science, ' if row[12] else ''}{'English, ' if row[13] else ''}{'History, ' if row[14] else ''}{'Computer Science, ' if row[15] else ''}{row[16] if row[16] else ''}".strip()
             if subjects[-1] == ',': subjects = subjects[:-1]
-            grade = row[5]
-            age = row[6]
+            age = row[5]
+            grade = row[6]
             availability = row[7]
             if row[18]:
                 additional = f'''
-                -----------------
-                Additional Information: {row[18]}'''
+-----------------
+Additional Information: {row[18]}'''
             else:
                 additional = ''
-            msg = f'''{client.get_guild(671509704157167646).default_role} Student from {location} needs help with {subjects}
-            -----------------
-            Grade: {grade}, Age: {age}
-            -----------------
-            Availability: {availability} {additional}
+            msg = f'''{client.get_guild(671509704157167646).default_role} **Student from {location} needs help with {subjects}**
+-----------------
+Grade: {grade}, Age: {age}
+-----------------
+Availability: {availability} {additional}
             
-            React to this message with an emoji of your choice if you're interested in taking this request. Our operations team will reach out to those interested with more details.'''
+React to this message with an emoji of your choice if you're interested in taking this request. Our operations team will reach out to those interested with more details.'''
             await client.get_guild(671509704157167646).get_channel(787592274119884843).send(msg)
         await asyncio.sleep(3600*2)
     
@@ -75,4 +75,4 @@ async def ping(ctx):
 
 # Run bot
 client.loop.create_task(send_requests())
-client.run('Nzg1OTc2MzE5NDg5OTk4ODk4.X8_rfQ.lZKs9Z9-kRv2m_5jvSX-rN0Gk3A')
+client.run('Nzg1OTc2MzE5NDg5OTk4ODk4.X8_rfQ.Ac8uGR71gbQae4Z2M0e_wt0YSfo')
