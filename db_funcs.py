@@ -1,31 +1,6 @@
 import sqlite3
 
-def requestTutoring(form):  # sourcery skip: merge-nested-ifs
-    """
-    userType
-    lastName
-    firstName
-    location
-    age
-    grade
-    availability
-    marketingSource (if from other, then make this otherWay)
-    studentContact
-    parentContact
-    math
-    science
-    english
-    history
-    compsci
-    wantOther
-    otherSubj
-    specificClass
-    additional
-    ['id', 'userType', 'lastName', 'firstName', 'location', 'age', 'grade', 'availability', 
-    'marketingSource', 'studentContact', 'parentContact', 'math', 'science', 'english', 
-    'history', 'compsci', 'wantOther', 'otherSubj', 'specificClass', 'additional']
-    """
-
+def requestTutoring(form):
     # Preprocess form data
     marketingSource = form['marketingSource'] if (not form.get('otherWay')) else form.get('otherWay')
     age = int(form['age'])
@@ -60,7 +35,7 @@ def requestTutoring(form):  # sourcery skip: merge-nested-ifs
     c = conn.cursor()
 
     # Insert form data into database
-    c.execute('''INSERT INTO users 
+    c.execute('''INSERT INTO pending_requests 
     (userType, lastName, firstName, location, age, grade, availability, marketingSource, studentContact, 
     parentContact, math, science, english, history, compsci, otherSubj, specificClass, additional)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', 

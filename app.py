@@ -12,10 +12,10 @@ def index():
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
 
+# Everything static except tutor request.
 @app.route('/home', methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
-        # use request.form
         db_funcs.requestTutoring(request.form)
     return render_template('home.html')
 
