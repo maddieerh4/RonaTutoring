@@ -1,4 +1,4 @@
-import discord, sqlite3, asyncio
+import discord, sqlite3, asyncio, random
 from discord.ext import commands, tasks
 
 # Initialize bot
@@ -7,8 +7,13 @@ client = commands.Bot(command_prefix='rona ', intents=intents)
 
 # Open database
 conn = sqlite3.connect("ronatutoring.sqlite")
+conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
+# Constants
+tellTutorToReact = '''
+            
+React to this message with an emoji of your choice if you're interested in taking this request. Our discord bot will reach out to those interested with more details.'''
 
 # Send tutor requests to tutor-request channel every 2 hours
 async def send_requests():
@@ -20,32 +25,47 @@ async def send_requests():
             if len(deleted) == 0:
                 break
 
-        # Send pending requests
+        # From pending_requests database, get discordMessage
         cur.execute("SELECT * FROM pending_requests")
         rows = cur.fetchall()
-        for row in rows:
-            location = row[4]
-            subjects = f"{'Math, ' if row[11] else ''}{'Science, ' if row[12] else ''}{'English, ' if row[13] else ''}{'History, ' if row[14] else ''}{'Computer Science, ' if row[15] else ''}{row[16] if row[16] else ''}".strip()
-            if subjects[-1] == ',': subjects = subjects[:-1]
-            age = row[5]
-            grade = row[6]
-            availability = row[7]
-            if row[18]:
-                additional = f'''
------------------
-Additional Information: {row[18]}'''
-            else:
-                additional = ''
-            msg = f'''{client.get_guild(671509704157167646).default_role} **Student from {location} needs help with {subjects}**
------------------
-Grade: {grade}, Age: {age}
------------------
-Availability: {availability} {additional}
-            
-React to this message with an emoji of your choice if you're interested in taking this request. Our operations team will reach out to those interested with more details.'''
-            await client.get_guild(671509704157167646).get_channel(787592274119884843).send(msg)
-        await asyncio.sleep(3600*2)
-    
+        discordMessages = [row['discordMessage'] for row in rows]
+        for message in discordMessages:
+            # Send pending request message
+            await client.get_guild(671509704157167646).get_channel(787592274119884843).send(f"{client.get_guild(671509704157167646).default_role} {message}")
+
+        # Wait 2 hours for reactions from tutors
+        #                   vv
+        await asyncio.sleep(120) # HEY SOHAM SOHAM SOHAM YOU GOTTA CHANGE THIS TO 2 ACTUAL HOURS AFTER YOU'RE DONE OKAY???
+        #                   ^^
+
+        cur.execute("SELECT * FROM confirmation_message_counters")
+        counters = cur.fetchall()
+        tutorIds = [counter['tutorId'] for counter in counters]
+        # Go through all pending requests from this 2 hour period
+        async for message in client.get_guild(671509704157167646).get_channel(787592274119884843).history():
+            if len(message.reactions) >= 1:
+                # Send confirmation messages to all people who reacted
+                # Some people might have reacted twice or more with different emojis; we want to send a confirmation message to them only ONCE
+                ids = []
+                for reaction in message.reactions:
+                    async for user in reaction.users():
+                        if user.id not in ids:
+                            # If this is the first time a tutor reacted to a request, initialize the confirmationMessageCount to 1 in the confirmation_message_counters table
+                            if user.id not in tutorIds:
+                                newConfirmationMessageCount = 1
+                                cur.execute('INSERT INTO confirmation_message_counters (tutorId, confirmationMessageCount) VALUES (?, ?)', (user.id, newConfirmationMessageCount))
+                            # If this is not the first time a tutor reacted to a request, increment the confirmationMessageCount by 1 in the confirmation_message_counters table
+                            else:
+                                newConfirmationMessageCount = counter = list(filter(lambda counter: counter['tutorId']==user.id, counters))[0]['confirmationMessageCount'] + 1
+                                cur.execute('UPDATE confirmation_message_counters SET confirmationMessageCount = ? WHERE tutorId = ?;', (newConfirmationMessageCount, user.id))
+                            conn.commit()
+                            
+                            # Send confirmation message
+                            # message.content[:(-1)*len(tellTutorToReact)] ==> the tutor-requests message, without the "React to this message..." part
+                            await user.send(f"{message.content[:(-1)*len(tellTutorToReact)]}\n\nAre you sure you want this student? Text either \"yes {newConfirmationMessageCount}\" or \"no {newConfirmationMessageCount}\" (all undercase, without the quotes)")
+                        ids.append(user.id)
+                ids.clear()
+
 
 # Before doing anything *important* wait for bot to be ready
 @client.event
@@ -66,13 +86,12 @@ async def on_member_join(member):
 async def on_member_remove(member):
     print(f'{member} has left this server.')
 
-
-# Get ping
+#TESTING
 @client.command()
-async def ping(ctx):
-    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+async def foo(ctx, member: discord.Member):
+    await ctx.send(f"{member.name}#{member.id}")
 
 
 # Run bot
 client.loop.create_task(send_requests())
-client.run('Nzg1OTc2MzE5NDg5OTk4ODk4.X8_rfQ.Ac8uGR71gbQae4Z2M0e_wt0YSfo')
+client.run('Nzg1OTc2MzE5NDg5OTk4ODk4.X8_rfQ.cQe6lKkS2mXNzgnpFgO7bKubLBM')
