@@ -57,10 +57,10 @@ Availability: {form['availability']} {additionalPart}{tellTutorToReact}'''
 
     # Open database
     conn = sqlite3.connect("ronatutoring.sqlite")
-    c = conn.cursor()
+    cur = conn.cursor()
 
     # Insert form data into database
-    c.execute('''INSERT INTO pending_requests 
+    cur.execute('''INSERT INTO pending_requests 
     (studentFullName, parentFullName, location, age, grade, availability, marketingSource, studentContact, 
     parentContact, math, science, english, history, compsci, otherSubj, specificClass, additional, discordMessage)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', 
@@ -71,3 +71,41 @@ Availability: {form['availability']} {additionalPart}{tellTutorToReact}'''
     # Commit and close
     conn.commit()
     conn.close()
+
+def addTutorStudentPair(conn, cur, tutorId, confirmationMessageIndex, discordMessage):
+    # Get pending request
+    # discordMessage[10:] deletes "@everyone "
+    cur.execute('SELECT * FROM pending_requests WHERE discordMessage = ?', (discordMessage[10:],))
+    pending_request = cur.fetchall()[0]
+    # Delete pending request
+    cur.execute('DELETE FROM pending_requests WHERE studentFullName = ? AND studentContact = ?', (pending_request['studentFullName'], pending_request['studentContact']))
+
+    # Delete pending confirmation
+    cur.execute('DELETE FROM pending_confirmations WHERE tutorId = ? AND confirmationMessageIndex = ? AND discordMessage = ?', (tutorId, confirmationMessageIndex, discordMessage))
+
+    # Add to tutor_student_tracker
+    cur.execute("""INSERT INTO tutor_student_tracker 
+            (tutorId, confirmationMessageIndex, 
+            studentFullName, parentFullName, location, age,
+            grade, availability, marketingSource, 
+            studentContact, parentContact, 
+            math, science, english, history, compsci, otherSubj,
+            specificClass, additional, 
+            discordMessage) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
+            (tutorId, confirmationMessageIndex, 
+            pending_request['studentFullName'], pending_request['parentFullName'], pending_request['location'], pending_request['age'], 
+            pending_request['grade'], pending_request['availability'], pending_request['marketingSource'], 
+            pending_request['studentContact'], pending_request['parentContact'], 
+            pending_request['math'], pending_request['science'], pending_request['english'], pending_request['history'], pending_request['compsci'], pending_request['otherSubj'], 
+            pending_request['specificClass'], pending_request['additional'], 
+            discordMessage))
+    
+    # Commit
+    conn.commit()
+
+def removePendingConfirmation(conn, cur, tutorId, confirmationMessageIndex):
+    # Remove pending confirmation
+    cur.execute('DELETE FROM pending_confirmations WHERE tutorId = ? AND confirmationMessageIndex = ?', (tutorId, confirmationMessageIndex))
+    # Commit
+    conn.commit()
